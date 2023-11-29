@@ -1,6 +1,7 @@
 # AngularJS To-Do List with Typing Animation
 
-**A stylish and interactive To-Do List application built with AngularJS, featuring a unique typing animation.**
+**A interactive To-Do List application built with AngularJS, featuring a unique typing animation.**
+**Static Web application is present inside the static_web_application folder, its the raw code XD**
 
 ## Table of Contents
 1. [**Overview**](#overview)
