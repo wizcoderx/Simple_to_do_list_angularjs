@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todoApp">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS To-Do List</title>
+  <!-- Include AngularJS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="TodoController">
+
+  <h1>To-Do List</h1>
+
+  <form ng-submit="addTask()" novalidate>
+    <input type="text" ng-model="newTask" placeholder="Add a new task" required>
+    <select ng-model="taskPriority">
+      <option value="high">High</option>
+      <option value="medium">Medium</option>
+      <option value="low">Low</option>
+    </select>
+    <button type="submit">Add Task</button>
+    <span ng-show="isDuplicateTask()">Task already exists!</span>
+  </form>
+
+  <ul>
+    <li ng-repeat="task in tasks" ng-class="{ 'completed': task.completed, 'high-priority': task.priority === 'high' }">
+      <input type="checkbox" ng-model="task.completed" ng-change="completeTask(task)">
+      {{ task.title }} (Priority: {{ task.priority }})
+    </li>
+  </ul>
+
+  <script>
+    var app = angular.module('todoApp', []);
+
+    app.controller('TodoController', function ($scope) {
+      $scope.tasks = [];
+
+      $scope.newTask = '';
+      $scope.taskPriority = 'low';
+
+      $scope.addTask = function () {
+        if ($scope.newTask && !$scope.isDuplicateTask()) {
+          $scope.tasks.push({ title: $scope.newTask, completed: false, priority: $scope.taskPriority });
+          $scope.newTask = ''; // Clear the input field after adding a task
+          $scope.taskPriority = 'low'; // Reset priority to default
+        }
+      };
+
+      $scope.completeTask = function (task) {
+        // Handle task completion logic
+        console.log('Task completed:', task);
+      };
+
+      $scope.isDuplicateTask = function () {
+        return $scope.tasks.some(function (task) {
+          return task.title.toLowerCase() === $scope.newTask.toLowerCase();
+        });
+      };
+    });
+  </script>
+
+  <style>
+    /* Add your custom styles here */
+    .completed {
+      text-decoration: line-through;
+      color: #29a329;
+    }
+
+    .high-priority {
+      font-weight: bold;
+      color: red;
+    }
+
+    span {
+      color: red;
+    }
+  </style>
+
+</body>
+</html>
