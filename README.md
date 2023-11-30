@@ -24,3 +24,7 @@ Custom validation is implemented in the following way:
 To use this password generator, simply open the HTML file in a web browser. Select the desired character types, and the generated password will update in real-time.
 
 Feel free to customize the character sets and password length according to your preferences.
+
+## Contribution
+
+Developers are welcome to make any changes in the code. When making pull requests, ensure that the changes are saved on a different branch. Developers need to create a separate branch for their changes.
