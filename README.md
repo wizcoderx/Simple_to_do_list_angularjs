@@ -2,6 +2,10 @@
 
 This is a simple AngularJS application that generates passwords based on user-selected options.
 
+## Author
+
+@wizcoderx
+
 ## Logic Used in the Code
 
 The code utilizes AngularJS to create a dynamic password generator with the following logic:
